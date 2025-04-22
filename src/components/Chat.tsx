@@ -26,7 +26,7 @@ export default function Chat() {
   }, [targetId, isLoading]);
 
   return (
-    <div className="flex flex-col  gap-5  p-4 bg-sidebar size-[650px] relative rounded-md  ">
+    <div className="flex flex-col  gap-5  p-4 bg-sidebar w-[95%] h-[650px]  md:size-[650px] relative rounded-md  ">
       <div
         className={`absolute inset-0 pointer-events-none w-full h-full   -z-10 transition-all duration-700  ease-[cubic-bezier(0.25,0.8,0.25,1)] bg-primary shadow-xl shadow-accent 
       ${isFocused ? "scale-[1.008] opacity-100" : "  scale-100 opacity-0"}

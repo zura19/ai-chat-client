@@ -13,8 +13,10 @@ function App() {
         <Route
           path="/"
           element={
-            <div className="grid grid-cols-[15fr_80fr]  h-dvh divide-x">
-              <Sidebar />
+            <div className="grid md:grid-cols-[15fr_80fr]  h-dvh divide-x">
+              <div className="hidden md:block">
+                <Sidebar />
+              </div>
               <main className="">
                 <Navbar />
                 <div className="flex items-center justify-center h-fit pt-8">

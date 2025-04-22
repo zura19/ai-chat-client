@@ -4,7 +4,7 @@ import { useAppSelector } from "@/store";
 import { useQuery } from "@tanstack/react-query";
 import { useSearchParams } from "react-router";
 
-export default function Sidebar() {
+export default function Sidebar({ className }: { className?: string }) {
   const user = useAppSelector((state) => state.user.user);
   const { data, isLoading } = useQuery<
     | { success: boolean; chats: IConversation[] }
@@ -12,15 +12,14 @@ export default function Sidebar() {
   >({
     queryKey: ["questions", user?.id],
     queryFn: () => getChats(),
+    enabled: !!user?.id,
   });
 
   console.log(data);
 
   if (!data) {
     return (
-      <aside className="bg-sidebar divide-y h-full py-4 overflow-scroll ">
-        <p className="text-sm text-center">Loading...</p>
-      </aside>
+      <aside className="bg-sidebar divide-y h-full py-4 overflow-scroll "></aside>
     );
   }
 
@@ -35,7 +34,9 @@ export default function Sidebar() {
   const showChats = !isLoading && data?.chats?.length > 0;
 
   return (
-    <aside className="bg-sidebar divide-y h-full py-4 overflow-scroll ">
+    <aside
+      className={`  md:block bg-sidebar divide-y h-full py-4 overflow-scroll ${className} `}
+    >
       {isLoading && <p className="text-sm text-center">Loading...</p>}
       {data?.chats?.length === 0 && <div></div>}
 

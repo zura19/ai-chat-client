@@ -3,6 +3,7 @@ import LoginModal from "./LoginModal";
 import useLogout from "@/hooks/useLogout";
 import { Button } from "./ui/button";
 import { useSearchParams } from "react-router";
+import SidebarSheet from "./SidebarSheet";
 
 export default function Navbar() {
   const [, setSearchParams] = useSearchParams();
@@ -20,13 +21,16 @@ export default function Navbar() {
       {!user ? (
         <LoginModal />
       ) : (
-        <Button
-          variant={"ghost"}
-          className="flex items-center gap-4"
-          onClick={logout}
-        >
-          logout
-        </Button>
+        <div className="flex items-center gap-1">
+          <SidebarSheet />
+          <Button
+            variant={"ghost"}
+            className="flex items-center gap-4"
+            onClick={logout}
+          >
+            logout
+          </Button>
+        </div>
       )}
     </nav>
   );
